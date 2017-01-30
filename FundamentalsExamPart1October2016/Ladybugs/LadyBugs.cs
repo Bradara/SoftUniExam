@@ -23,23 +23,24 @@
             while (!command.Equals("end"))
             {
                 var input = command.Split();
-                var index = int.Parse(input[0]);
+                var index = long.Parse(input[0]);
                 var direction = input[1];
-                var length = int.Parse(input[2]);
+                var length = long.Parse(input[2]);
                 bool firstFly = true;
 
-                if (field[index] == 1)
-                    Fly(field, index, direction, length, firstFly);
+                if (index >= 0 && index < field.Length)
+                    if (field[index] == 1)
+                        Fly(field, index, direction, length, firstFly);
 
                 command = Console.ReadLine();
             }
             Console.WriteLine(string.Join(" ", field));
         }
 
-        private static void Fly(int[] field, int index, string direction, int length, bool firstFly)
+        private static void Fly(int[] field, long index, string direction, long length, bool firstFly)
         {
-            if(firstFly)
-            field[index] = 0;
+            if (firstFly)
+                field[index] = 0;
 
             if (direction.Equals("right"))
             {
@@ -48,7 +49,7 @@
                 {
                     if (field[newIndex] == 1)
                     {
-                        Fly(field, newIndex, direction, 1, false);
+                        Fly(field, newIndex, direction, length, false);
                     }
                     else
                     {
@@ -65,7 +66,7 @@
                 {
                     if (field[newIndex] == 1)
                     {
-                        Fly(field, newIndex, direction, 1, false);
+                        Fly(field, newIndex, direction, length, false);
                     }
                     else
                     {
