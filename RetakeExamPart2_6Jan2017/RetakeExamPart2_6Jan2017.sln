@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnduranceRally", "EnduranceRally\EnduranceRally.csproj", "{D06D1059-B0DB-4B1F-8066-819BD29009EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinningTicket", "WinningTicket\WinningTicket.csproj", "{2B8D32D4-D38D-4081-B5D8-B010EFB59080}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D06D1059-B0DB-4B1F-8066-819BD29009EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D06D1059-B0DB-4B1F-8066-819BD29009EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D06D1059-B0DB-4B1F-8066-819BD29009EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B8D32D4-D38D-4081-B5D8-B010EFB59080}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B8D32D4-D38D-4081-B5D8-B010EFB59080}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B8D32D4-D38D-4081-B5D8-B010EFB59080}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B8D32D4-D38D-4081-B5D8-B010EFB59080}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
