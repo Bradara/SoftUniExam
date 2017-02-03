@@ -6,14 +6,14 @@
 
     class LongestIncreasingSubsequence
     {
-        static List<int> inputArray;
+        static List<long> inputArray;
         static List<int> sequenceIndex = new List<int>();
-        static List<int> result = new List<int>();
+        static List<long> result = new List<long>();
         static int index = 0;
 
         static void Main()
         {
-            inputArray = Console.ReadLine().Split().Select(int.Parse).ToList();
+            inputArray = Console.ReadLine().Split().Select(long.Parse).ToList();
 
             CheckForSequence();
 

@@ -7,7 +7,7 @@
     class WinningTicket
     {
         static char[] delimeter = { ' ', ',' };
-        static char[] winSymbols = { '@', '#', '$', '%', '^' };
+        static char[] winSymbols = { '@', '#', '$', '^' };
         static int[] winPoints = new int[2];
         static char winChar;
 
@@ -15,7 +15,7 @@
         {
             var input = Console.ReadLine();
             string[] tickets = input.Split(delimeter, StringSplitOptions.RemoveEmptyEntries);
-           
+
             foreach (var ticket in tickets)
             {
                 if (ticket.Length != 20)
@@ -32,15 +32,15 @@
 
         private static void Print(string input)
         {
-            if (winPoints[0]!=winPoints[1]||winPoints[0]<6)
+            if (winPoints[0] > 5 && winPoints[0] < 10 && winPoints[1] > 5 && winPoints[1] < 10)
             {
-                Console.WriteLine($"ticket \"{input}\" - no match");
+                Console.WriteLine($"ticket \"{input}\" - {Math.Min(winPoints[0], winPoints[1])}{winChar}");
             }
-            else if (winPoints[0]>5&&winPoints[0]<10)
-            {
-                Console.WriteLine($"ticket \"{input}\" - {winPoints[0]}{winChar}");
-            }
-            else if (winPoints[0]==10)
+            //else if (winPoints[0]>5&&winPoints[0]<10)
+            //{
+            //    Console.WriteLine($"ticket \"{input}\" - {winPoints[0]}{winChar}");
+            //}
+            else if (winPoints[0] == 10 && winPoints[1] == 10)
             {
                 Console.WriteLine($"ticket \"{input}\" - {winPoints[0]}{winChar} Jackpot!");
             }
@@ -62,15 +62,16 @@
         private static void CheckRight(string str)
         {
             int count = 0;
-            
+            char c = '0';
             for (int i = 0; i < 7; i++)
             {
-                if (winChar == str[i] && str[i] == str[i + 1])
-                {                   
-                    count=1;
+                if (winSymbols.Contains(str[i]) && str[i] == str[i + 1])
+                {
+                    c = str[i];
+                    count = 1;
                     for (int j = i; j < str.Length - 1; j++)
                     {
-                        if (str[j] == winChar && str[j + 1] == winChar)
+                        if (str[j] == c && str[j + 1] == c)
                         {
                             count++;
                             i++;
@@ -83,7 +84,8 @@
                 }
                 if (count > 5)
                 {
-                    winPoints[1] = count;                            
+                    winPoints[1] = count;
+                    winChar = c;
                 }
             }
         }
@@ -97,29 +99,29 @@
             char c = '0';
             for (int i = 0; i < 7; i++)
             {
-                if (winSymbols.Contains(str[i])&&str[i]==str[i+1])
+                if (winSymbols.Contains(str[i]) && str[i] == str[i + 1])
                 {
                     c = str[i];
-                    count = 1;             
-                    for (int j = i; j < str.Length-1; j++)
+                    count = 1;
+                    for (int j = i; j < str.Length - 1; j++)
                     {
-                        if (str[j] == c &&str[j+1]==c)
+                        if (str[j] == c && str[j + 1] == c)
                         {
                             count++;
-                            i++;                           
+                            i++;
                         }
                         else
-                        {                            
+                        {
                             break;
                         }
-                    }                    
+                    }
                 }
-                if (count>5)
+                if (count > 5)
                 {
                     winPoints[0] = count;
-                    winChar = c;                    
+                    winChar = c;
                 }
             }
         }
     }
-}   
+}
