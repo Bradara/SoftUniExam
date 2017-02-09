@@ -3,32 +3,47 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text.RegularExpressions;
 
     class SrabskoUnleashed
     {
         static Dictionary<string, Dictionary<string, int>> schedule = new Dictionary<string, Dictionary<string, int>>();
+        static string pattern = @"(.+?) @(.+?) (\d+?) (\d+?)\b";
 
         static void Main()
         {
-            var input = Console.ReadLine();
+            var input = string.Empty;
 
-            while (!input.Equals("End"))
+            while (!(input = Console.ReadLine()).Equals("End"))
             {
-                var firstSpit = input.Split('@');
-                var name = firstSpit[0].Trim();
-
-                var secondSplit = firstSpit[1].Split();
-                if (secondSplit.Length > 2)
-                {             
-                    var ticketCount = int.Parse(secondSplit[secondSplit.Length - 1]);
-                    var ticketPrice = int.Parse(secondSplit[secondSplit.Length - 2]);
-                    var income = ticketCount * ticketPrice;
-                    var city = string.Join(" ", secondSplit.Take(secondSplit.Length - 2).ToArray());
-
-                    Add(name, city, income);
+                if (!Regex.IsMatch(input, pattern))
+                {
+                    continue;
                 }
-                
-                input = Console.ReadLine();
+                var firstSplit = input.Split('@');
+                var name = firstSplit[0].Trim();
+
+                var secondSplit = firstSplit[1].Split();
+                if (secondSplit.Length > 2 && secondSplit.Length < 6)
+                {
+                    int ticketCount;
+                    bool isCountValid = int.TryParse(secondSplit[secondSplit.Length - 1], out ticketCount);
+                    int ticketPrice;
+                    bool isPriceValid = int.TryParse(secondSplit[secondSplit.Length - 2], out ticketPrice);
+                    int income = 0;
+                    bool isIncomeValid = false;
+                    if (isCountValid && isPriceValid)
+                    {
+                        income = ticketCount * ticketPrice;
+                        isIncomeValid = true;
+                    }
+
+                    var city = string.Join(" ", secondSplit.Take(secondSplit.Length - 2).ToArray());
+                    if (isIncomeValid)
+                    {
+                        Add(name, city, income);
+                    }
+                }
             }
 
             Print();

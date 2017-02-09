@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegendaryFarming", "Legenda
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SrabskoUnleashed", "SrabskoUnleashed\SrabskoUnleashed.csproj", "{A92AC9D5-07FD-4B9E-B8B9-4A717266A003}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragonArny", "DragonArny\DragonArny.csproj", "{F5DB7179-266B-45A4-ACEC-A463C2F99F3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{A92AC9D5-07FD-4B9E-B8B9-4A717266A003}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A92AC9D5-07FD-4B9E-B8B9-4A717266A003}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A92AC9D5-07FD-4B9E-B8B9-4A717266A003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5DB7179-266B-45A4-ACEC-A463C2F99F3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5DB7179-266B-45A4-ACEC-A463C2F99F3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5DB7179-266B-45A4-ACEC-A463C2F99F3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5DB7179-266B-45A4-ACEC-A463C2F99F3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

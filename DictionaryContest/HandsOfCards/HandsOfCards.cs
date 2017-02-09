@@ -9,18 +9,18 @@
         static string[] deck = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
         static string[] cardsType = { "0", "C", "D", "H", "S" };//S -> 4, H-> 3, D -> 2, C -> 
         static Dictionary<string, List<string>> playerCards = new Dictionary<string, List<string>>();
-        static Dictionary<string, int> playerPoints = new Dictionary<string, int>();
+        static Dictionary<string, long> playerPoints = new Dictionary<string, long>();
         static char[] separator = { ' ', ',', ':' };
 
-        static void Main(string[] args)
+        static void Main()
         {
             var input = Console.ReadLine();
 
             while (!input.Equals("JOKER"))
             {
-                var inputSplit = input.Split(separator, StringSplitOptions.RemoveEmptyEntries).ToArray();
+                var inputSplit = input.Split(':').ToArray();
                 var name = inputSplit[0];
-                var cards = inputSplit.Skip(1).Take(inputSplit.Length - 1).ToList();
+                var cards = inputSplit[1].Split(separator, StringSplitOptions.RemoveEmptyEntries).ToList();
                 Add(name, cards);
 
                 input = Console.ReadLine();
@@ -45,14 +45,14 @@
             }
         }
 
-        private static int Points(List<string> cards)
+        private static long Points(List<string> cards)
         {
-            var sum = 0;
+            long sum = 0;
             foreach (var card in cards.Distinct())
             {
-                var power =string.Join("",card.Take(card.Length-1).ToArray());
+                var power = string.Join("", card.Take(card.Length - 1).ToArray());
                 var type = card.Last().ToString();
-                sum += Array.IndexOf(deck, power) * (int)Array.IndexOf(cardsType, type);
+                sum += Array.IndexOf(deck, power) * Array.IndexOf(cardsType, type);
             }
 
             return sum;
@@ -64,14 +64,10 @@
             {
                 foreach (var card in cards)
                 {
-                    //if (playerCards[name].Contains(card))
-                    //{
-                    //    continue;
-                    //}
-                    //else
+                    if (!playerCards[name].Contains(card))
                     {
                         playerCards[name].Add(card);
-                    }
+                    }                  
                 }
             }
             else
@@ -80,5 +76,6 @@
 
             }
         }
+
     }
 }
