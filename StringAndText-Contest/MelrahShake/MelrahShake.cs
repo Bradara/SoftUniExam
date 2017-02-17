@@ -9,7 +9,7 @@
 
         public static void Main()
         {
-            melrahString = Console.ReadLine();
+            melrahString =Console.ReadLine();
             pattern = Console.ReadLine();
 
             CheckIt();
@@ -19,6 +19,12 @@
 
         private static void CheckIt()
         {
+            if (pattern.Length == 0)
+            {
+                Console.WriteLine("No shake.");
+                return;
+            }
+
             var count = 0;
             var index = melrahString.IndexOf(pattern);
 

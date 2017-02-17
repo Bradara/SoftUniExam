@@ -8,7 +8,7 @@
 
         public static void Main()
         {
-            var input = Console.ReadLine()?.Split(new []{' '}, StringSplitOptions.RemoveEmptyEntries);
+            var input = Console.ReadLine()?.Split(new []{' ', '\t', '\n'}, StringSplitOptions.RemoveEmptyEntries);
 
             for (int i = 0; i < input.Length; i++)
             {
