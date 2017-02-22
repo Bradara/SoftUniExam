@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetherRealms", "NetherRealm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RolliTheCoder", "RolliTheCoder\RolliTheCoder.csproj", "{6E4FED2C-4EF5-4826-ACA6-23D33DD8F467}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{E026BC2D-1B04-4EE5-910F-9A3DE5C11067}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{6E4FED2C-4EF5-4826-ACA6-23D33DD8F467}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E4FED2C-4EF5-4826-ACA6-23D33DD8F467}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E4FED2C-4EF5-4826-ACA6-23D33DD8F467}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E026BC2D-1B04-4EE5-910F-9A3DE5C11067}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E026BC2D-1B04-4EE5-910F-9A3DE5C11067}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E026BC2D-1B04-4EE5-910F-9A3DE5C11067}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E026BC2D-1B04-4EE5-910F-9A3DE5C11067}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -27,33 +27,32 @@ namespace RolliTheCoder
 
             while (!input.Equals("Time for Code"))
             {
-                var inputSplit = input.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                var inputSplit = input.Split(new[] { ' ', '\t', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
                 var id = int.Parse(inputSplit[0]);
-                if (inputSplit[1][0].Equals('#') && !events.Exists(e => e.ID == id))
+                var name = inputSplit[1].Substring(1);
+                if (inputSplit[1][0].Equals('#') && !events.Any(e => e.ID == id)&&!events.Any(e => e.Name == name))
                 {
-                    var name = string.Join("", inputSplit[1].Skip(1).Take(inputSplit[1].Length - 1));
                     var someEvent = new Event(id, name);
-                    var participants = inputSplit.Skip(2).Take(inputSplit.Length - 2);
+                    var participants = inputSplit.Skip(2).Take(inputSplit.Length - 2).Distinct();
 
-                    foreach (var participant in participants)
+                    foreach (var participant in participants.Distinct())
                     {
-                        someEvent.ParticipantList.Add(participant);
+                        someEvent.ParticipantList.Add(participant.Trim());
                     }
                     events.Add(someEvent);
                 }
                 else if (inputSplit[1][0].Equals('#'))
                 {
                     var eventName = events.Where(e => e.ID == id).ElementAt(0);
-                    var name = string.Join("", inputSplit[1].Skip(1).Take(inputSplit.Length));
                     if (eventName.Name == name)
                     {
-                        var participants = inputSplit.Skip(2).Take(inputSplit.Length);
+                        var participants = inputSplit.Skip(2).Take(inputSplit.Length - 2).Distinct();
 
-                        foreach (var participant in participants)
+                        foreach (var participant in participants.Distinct())
                         {
                             if (!eventName.ParticipantList.Contains(participant))
                             {
-                                eventName.ParticipantList.Add(participant);
+                                eventName.ParticipantList.Add(participant.Trim());
                             }
                         }
                     }
