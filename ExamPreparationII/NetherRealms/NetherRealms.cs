@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace NetherRealms
 {
@@ -25,7 +26,6 @@ namespace NetherRealms
                     if (char.IsDigit(ch)||ch.Equals('*')||ch.Equals('/')||ch.Equals('+')||ch.Equals('-')||ch.Equals('.'))
                     {
                         damageName += ch;
-                        healthName += ' ';
                     }
                     else
                     {
@@ -42,7 +42,7 @@ namespace NetherRealms
                 var health = 0;
                 for (int i = 0; i < name.Length; i++)
                 {
-                    if (name[i].Equals(' '))
+                    if (name[i].Equals(' ')||name[i]=='\t'||name[i]=='\r'||name[i]=='\n')
                     {
                         continue;
                     }
@@ -54,8 +54,7 @@ namespace NetherRealms
 
             private decimal CalcDamage(string name)
             {
-                var nums = name.Split(new []{' ', '*', '/'}, StringSplitOptions.RemoveEmptyEntries).Select(decimal.Parse).ToArray();
-
+                var rx = new Regex(@"\d+\.\d+|-\d+\.\d+|\d+|-\d+");
                 var operand = string.Empty;
                 for (int i = 0; i < name.Length; i++)
                 {
@@ -66,9 +65,12 @@ namespace NetherRealms
                 }
 
                 var damage = 0m;
-                for (int i = 0; i < nums.Length; i++)
+                var matches = rx.Matches(name);
+
+                foreach (Match match in matches)
                 {
-                    damage += nums[i];
+                    var num = decimal.Parse(match.ToString());
+                    damage += num;
                 }
 
                 for (int i = 0; i < operand.Length; i++)
